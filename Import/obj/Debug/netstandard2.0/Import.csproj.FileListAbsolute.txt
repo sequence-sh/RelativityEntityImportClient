@@ -1,9 +1,0 @@
-C:\Users\wainw\source\repos\Reductech\relativity\Import\bin\Debug\netstandard2.0\Import.deps.json
-C:\Users\wainw\source\repos\Reductech\relativity\Import\bin\Debug\netstandard2.0\Import.dll
-C:\Users\wainw\source\repos\Reductech\relativity\Import\bin\Debug\netstandard2.0\Import.pdb
-C:\Users\wainw\source\repos\Reductech\relativity\Import\obj\Debug\netstandard2.0\Import.csproj.AssemblyReference.cache
-C:\Users\wainw\source\repos\Reductech\relativity\Import\obj\Debug\netstandard2.0\Import.AssemblyInfoInputs.cache
-C:\Users\wainw\source\repos\Reductech\relativity\Import\obj\Debug\netstandard2.0\Import.AssemblyInfo.cs
-C:\Users\wainw\source\repos\Reductech\relativity\Import\obj\Debug\netstandard2.0\Import.csproj.CoreCompileInputs.cache
-C:\Users\wainw\source\repos\Reductech\relativity\Import\obj\Debug\netstandard2.0\Import.dll
-C:\Users\wainw\source\repos\Reductech\relativity\Import\obj\Debug\netstandard2.0\Import.pdb
