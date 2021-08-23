@@ -1,0 +1,9 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="C:\Users\wainw\source\repos\Reductech\relativity\ImportClient\packages\Relativity.DataExchange.Client.SDK.1.14.13\lib\net462\Relativity.DataExchange.Client.SDK.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\netstandard.library\2.0.3\build\netstandard2.0\ref\netstandard.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\wainw\source\repos\Reductech\relativity\ImportClient\packages\FastMember.1.5.0\lib\net461\FastMember.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\wainw\source\repos\Reductech\relativity\ImportClient\packages\Grpc.Core.Api.2.39.1\lib\net45\Grpc.Core.Api.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\wainw\source\repos\Reductech\relativity\ImportClient\packages\Relativity.Transfer.Client.7.3.12\lib\net462\FaspManager.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Data.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
