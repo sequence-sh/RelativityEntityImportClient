@@ -83,7 +83,7 @@ public sealed class AsyncDataReader : DbDataReader
 
     public override int FieldCount => _memberNames.Length;
 
-    public override bool IsClosed => _streamReader == null;
+    public override bool IsClosed => !_active;
 
     public override bool GetBoolean(int i)
     {
@@ -200,6 +200,9 @@ public sealed class AsyncDataReader : DbDataReader
     {
         var r = Array.IndexOf(_memberNames, name.ToLowerInvariant());
 
+        if (r < 0)
+            throw new IndexOutOfRangeException();
+
         return r;
     }
 
@@ -252,7 +255,15 @@ public sealed class AsyncDataReader : DbDataReader
     /// <summary>
     /// Gets the value of the current object in the member specified
     /// </summary>
-    public override object this[int i] => _streamReader.Current.Values[i].GetValue() ?? DBNull.Value;
+    public override object this[int i]
+    {
+        get
+        {
+            var r = _streamReader.Current.Values[i].GetValue() ?? DBNull.Value;
+
+            return r;
+        }
+    }
 }
 
 }

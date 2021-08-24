@@ -9,6 +9,7 @@
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=80b298ed_002D0a30_002D4f2c_002D84b7_002Df8dfff5a2131/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestMethod1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;MSTest::A40AEE3A-10FA-49EE-9465-8AD96DB52AC6::.NETFramework,Version=v4.8::ImportClient.Tests.UnitTest1.TestMethod1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::A40AEE3A-10FA-49EE-9465-8AD96DB52AC6::.NETFramework,Version=v4.8::ImportClient.Tests.UnitTest1.TestAsyncDataReader&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::A40AEE3A-10FA-49EE-9465-8AD96DB52AC6::.NETFramework,Version=v4.8::ImportClient.Tests.UnitTest1.TestMockJob&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
