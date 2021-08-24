@@ -6,10 +6,12 @@
   &lt;Assembly Path="C:\Users\wainw\source\repos\Reductech\relativity\ImportClient\packages\Grpc.Core.Api.2.39.1\lib\net45\Grpc.Core.Api.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\wainw\source\repos\Reductech\relativity\ImportClient\packages\Relativity.Transfer.Client.7.3.12\lib\net462\FaspManager.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Data.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\wainw\source\repos\Random\relativityimportclient\ImportClient\packages\Relativity.DataExchange.Client.SDK.1.14.13\lib\net462\Relativity.DataExchange.Client.SDK.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\wainw\AppData\Local\Temp\JetBrains\ReSharperPlatformVs16\vAny_5290355d\CoverageData\_ImportClient.-1527887293\Snapshot\snapshot.utdcvr</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=80b298ed_002D0a30_002D4f2c_002D84b7_002Df8dfff5a2131/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestMethod1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;MSTest::A40AEE3A-10FA-49EE-9465-8AD96DB52AC6::.NETFramework,Version=v4.8::ImportClient.Tests.UnitTest1.TestAsyncDataReader&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::A40AEE3A-10FA-49EE-9465-8AD96DB52AC6::.NETFramework,Version=v4.8::ImportClient.Tests.UnitTest1.TestMockJob&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::A40AEE3A-10FA-49EE-9465-8AD96DB52AC6::.NETFramework,Version=v4.8::ImportClient.Tests.HelperTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::A40AEE3A-10FA-49EE-9465-8AD96DB52AC6::.NETFramework,Version=v4.8::ImportClient.Tests.AsyncDataReaderTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
