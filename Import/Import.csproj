@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="protos/relativityimport.proto" />
+    <Protobuf Include="Protos/relativityImport.proto" />
   </ItemGroup>
   
 </Project>
