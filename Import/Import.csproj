@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
+    <Version>0.11.0$(VersionSuffix)</Version>
   </PropertyGroup>
 
   <ItemGroup>
