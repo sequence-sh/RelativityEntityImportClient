@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Data;
 using System.Data.Common;
 using System.Linq;
 using Grpc.Core;
@@ -28,10 +27,7 @@ public sealed class AsyncDataReader : DbDataReader
 
     public override int Depth => 0;
 
-    public override void Close()
-    {
-        Shutdown();
-    }
+    public override void Close() => Shutdown();
 
     public override bool HasRows => _active;
 
@@ -60,12 +56,6 @@ public sealed class AsyncDataReader : DbDataReader
         return false;
     }
 
-    /// <inheritdoc />
-    public override DataTable GetSchemaTable()
-    {
-        return base.GetSchemaTable();
-    }
-
     public override int RecordsAffected => 0;
 
     protected override void Dispose(bool disposing)
@@ -76,24 +66,15 @@ public sealed class AsyncDataReader : DbDataReader
             Shutdown();
     }
 
-    private void Shutdown()
-    {
-        _active = false;
-    }
+    private void Shutdown() => _active = false;
 
     public override int FieldCount => _memberNames.Length;
 
-    public override bool IsClosed => _streamReader == null;
+    public override bool IsClosed => !_active;
 
-    public override bool GetBoolean(int i)
-    {
-        return (bool)this[i];
-    }
+    public override bool GetBoolean(int i) => (bool)this[i];
 
-    public override byte GetByte(int i)
-    {
-        return (byte)this[i];
-    }
+    public override byte GetByte(int i) => (byte)this[i];
 
     public override long GetBytes(
         int i,
@@ -113,10 +94,7 @@ public sealed class AsyncDataReader : DbDataReader
         return count;
     }
 
-    public override char GetChar(int i)
-    {
-        return (char)this[i];
-    }
+    public override char GetChar(int i) => (char)this[i];
 
     public override long GetChars(
         int i,
@@ -135,83 +113,43 @@ public sealed class AsyncDataReader : DbDataReader
         s.CopyTo((int)fieldoffset, buffer, bufferoffset, count);
         return count;
     }
+        
 
-    protected override DbDataReader GetDbDataReader(int i)
-    {
-        throw new NotSupportedException();
-    }
+    public override string GetDataTypeName(int i) => (_effectiveTypes == null ? typeof(object) : _effectiveTypes[i]).Name;
 
-    public override string GetDataTypeName(int i)
-    {
-        return (_effectiveTypes == null ? typeof(object) : _effectiveTypes[i]).Name;
-    }
+    public override DateTime GetDateTime(int i) => (DateTime)this[i];
 
-    public override DateTime GetDateTime(int i)
-    {
-        return (DateTime)this[i];
-    }
+    public override decimal GetDecimal(int i) => (decimal)this[i];
 
-    public override decimal GetDecimal(int i)
-    {
-        return (decimal)this[i];
-    }
+    public override double GetDouble(int i) => (double)this[i];
 
-    public override double GetDouble(int i)
-    {
-        return (double)this[i];
-    }
+    public override Type GetFieldType(int i) => _effectiveTypes == null ? typeof(object) : _effectiveTypes[i];
 
-    public override Type GetFieldType(int i)
-    {
-        return _effectiveTypes == null ? typeof(object) : _effectiveTypes[i];
-    }
+    public override float GetFloat(int i) => (float)this[i];
 
-    public override float GetFloat(int i)
-    {
-        return (float)this[i];
-    }
+    public override Guid GetGuid(int i) => (Guid)this[i];
 
-    public override Guid GetGuid(int i)
-    {
-        return (Guid)this[i];
-    }
+    public override short GetInt16(int i) => (short)this[i];
 
-    public override short GetInt16(int i)
-    {
-        return (short)this[i];
-    }
+    public override int GetInt32(int i) => (int)this[i];
 
-    public override int GetInt32(int i)
-    {
-        return (int)this[i];
-    }
+    public override long GetInt64(int i) => (long)this[i];
 
-    public override long GetInt64(int i)
-    {
-        return (long)this[i];
-    }
-
-    public override string GetName(int i)
-    {
-        return _memberNames[i];
-    }
+    public override string GetName(int i) => _memberNames[i];
 
     public override int GetOrdinal(string name)
     {
         var r = Array.IndexOf(_memberNames, name.ToLowerInvariant());
 
+        if (r < 0)
+            throw new IndexOutOfRangeException();
+
         return r;
     }
 
-    public override string GetString(int i)
-    {
-        return (string)this[i];
-    }
+    public override string GetString(int i) => (string)this[i];
 
-    public override object GetValue(int i)
-    {
-        return this[i];
-    }
+    public override object GetValue(int i) => this[i];
 
     public override IEnumerator GetEnumerator() => new DbEnumerator(this);
 
@@ -252,7 +190,15 @@ public sealed class AsyncDataReader : DbDataReader
     /// <summary>
     /// Gets the value of the current object in the member specified
     /// </summary>
-    public override object this[int i] => _streamReader.Current.Values[i].GetValue() ?? DBNull.Value;
+    public override object this[int i]
+    {
+        get
+        {
+            var r = _streamReader.Current.Values[i].GetValue() ?? DBNull.Value;
+
+            return r;
+        }
+    }
 }
 
 }

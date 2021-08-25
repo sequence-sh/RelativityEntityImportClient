@@ -32,11 +32,8 @@ public static class JobHelpers
         settings.StartRecordNumber             = 0;
     }
 
-    public static void SetJobMessages(ImportBulkArtifactJob job)
+    public static void SetExtraMessages(ImportBulkArtifactJob job)
     {
-        // This event provides the JobReport object.
-        job.OnComplete += report => { Console.WriteLine("The job has completed."); };
-
         // This event provides an IDictionary object with well-known parameters.
         job.OnError += row =>
         {
@@ -45,14 +42,14 @@ public static class JobHelpers
             Console.WriteLine(row["Message"]);
         };
 
-        // This event provides the JobReport object.
-        job.OnFatalException += report =>
-        {
-            Console.WriteLine("The job experienced a fatal exception: " + report.FatalException);
-        };
-
         // This event provides the Status object.
         job.OnMessage += status => { Console.WriteLine("Job message: " + status.Message); };
+    }
+
+    public static void SetJobMessages(IImportNotifier job)
+    {
+        // This event provides the JobReport object.
+        job.OnComplete += report => { Console.WriteLine("The job has completed."); };
 
         // This event provides the FullStatus object.
         job.OnProcessProgress += status =>
@@ -72,6 +69,12 @@ public static class JobHelpers
 
         // This event provides the row number.
         job.OnProgress += row => { Console.WriteLine("Job progress line number: " + row); };
+
+        // This event provides the JobReport object.
+        job.OnFatalException += report =>
+        {
+            Console.WriteLine("The job experienced a fatal exception: " + report.FatalException);
+        };
     }
 }
 
