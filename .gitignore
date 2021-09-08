@@ -364,6 +364,8 @@ nupkg/
 # Rider
 .idea
 
+packages/
+
 ## VisualStudioCode
 ## https://raw.githubusercontent.com/github/gitignore/master/Global/VisualStudioCode.gitignore
 ##
@@ -377,5 +379,3 @@ nupkg/
 ####
 **/StrykerOutput/
 version.env
-ImportClient/.vs/ImportClient/v16/.suo
-ImportClient/.vs/ImportClient/DesignTimeBuild/.dtbcache.v2
