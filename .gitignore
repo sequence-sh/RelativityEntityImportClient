@@ -364,8 +364,6 @@ nupkg/
 # Rider
 .idea
 
-packages/
-
 ## VisualStudioCode
 ## https://raw.githubusercontent.com/github/gitignore/master/Global/VisualStudioCode.gitignore
 ##
