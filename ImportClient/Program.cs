@@ -1,8 +1,8 @@
 ﻿using System;
 using Grpc.Core;
-using ReductechRelativityImport;
+using ReductechEntityImport;
 
-namespace ImportClient
+namespace Reductech.EDR.Connectors.EntityImportClient
 {
 
 public class Program
@@ -13,7 +13,7 @@ public class Program
     {
         var server = new Server
         {
-            Services = { Reductech_Relativity_Import.BindService(new ReductechImportImplementation()) },
+            Services = { Reductech_Entity_Import.BindService(new ReductechImportImplementation()) },
             Ports    = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
         };
 

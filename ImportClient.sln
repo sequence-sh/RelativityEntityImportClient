@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportClient", "ImportClient\ImportClient.csproj", "{7A8D77B6-20E1-4288-A6A2-779C3305E25A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityImportClient", "ImportClient\EntityImportClient.csproj", "{7A8D77B6-20E1-4288-A6A2-779C3305E25A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{656C6B8A-94A5-4BFB-ACB6-9A2BADABE661}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Import", "Import\Import.csproj", "{F3103BC7-4FAF-4949-9CF1-ED2A488B7FD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityImportClient.Proto", "Import\EntityImportClient.Proto.csproj", "{F3103BC7-4FAF-4949-9CF1-ED2A488B7FD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportClient.Tests", "ImportClient.Tests\ImportClient.Tests.csproj", "{A40AEE3A-10FA-49EE-9465-8AD96DB52AC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityImportClient.Tests", "ImportClient.Tests\EntityImportClient.Tests.csproj", "{A40AEE3A-10FA-49EE-9465-8AD96DB52AC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

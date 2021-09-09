@@ -5,7 +5,13 @@
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <Version>0.11.0$(VersionSuffix)</Version>
+    <AssemblyName>Reductech.EDR.Connectors.EntityImportClient.Proto</AssemblyName>
+    <RootNamespace>Reductech.EDR.Connectors.EntityImportClient.Proto</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\entityImport.proto" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.17.3" />
@@ -17,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos/relativityImport.proto" />
+    <Protobuf Include="Protos\entityImport.proto" />
   </ItemGroup>
   
 </Project>

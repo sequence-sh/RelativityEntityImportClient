@@ -11,9 +11,9 @@ using FluentAssertions;
 using Grpc.Core;
 using kCura.Relativity.DataReaderClient;
 using Moq;
-using ReductechRelativityImport;
+using ReductechEntityImport;
 
-namespace ImportClient.Tests
+namespace Reductech.EDR.Connectors.EntityImportClient.Tests
 {
 
 internal class FakeStreamReader<T> : IAsyncStreamReader<T>

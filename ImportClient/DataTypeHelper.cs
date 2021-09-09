@@ -1,7 +1,7 @@
 ﻿using System;
-using ReductechRelativityImport;
+using ReductechEntityImport;
 
-namespace ImportClient
+namespace Reductech.EDR.Connectors.EntityImportClient
 {
 
 public static class DataTypeHelper

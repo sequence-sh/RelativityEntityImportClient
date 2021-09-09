@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
 using kCura.Relativity.ImportAPI;
-using ReductechRelativityImport;
+using ReductechEntityImport;
 
-namespace ImportClient
+namespace Reductech.EDR.Connectors.EntityImportClient
 {
 
-class ReductechImportImplementation : Reductech_Relativity_Import.Reductech_Relativity_ImportBase
+class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_ImportBase
 {
     private StartImportCommand _command = null;
 
