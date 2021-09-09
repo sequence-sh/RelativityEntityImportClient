@@ -13,8 +13,11 @@ public class Program
     {
         var server = new Server
         {
-            Services = { Reductech_Entity_Import.BindService(new ReductechImportImplementation()) },
-            Ports    = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
+            Services =
+            {
+                Reductech_Entity_Import.BindService(new ReductechImportImplementation())
+            },
+            Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
         };
 
         server.Start();

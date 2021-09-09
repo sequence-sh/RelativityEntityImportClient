@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data;
-using System.Data.Common;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Grpc.Core;
 using kCura.Relativity.DataReaderClient;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ReductechEntityImport;
 
@@ -67,14 +65,13 @@ public class AsyncDataReaderTests
         var streamReader = new FakeStreamReader<ImportObject>(objects.GetEnumerator());
 
         var dataReader = new AsyncDataReader(columns, types, streamReader);
-            
 
         var dataTable = new DataTable();
 
         dataTable.Columns.AddRange(
             columns.Zip(types, (s, type) => new DataColumn(s, type)).ToArray()
         );
-        
+
         LoadAllRows(dataTable, dataReader);
 
         dataTable.Rows.Count.Should().Be(2);
@@ -82,11 +79,11 @@ public class AsyncDataReaderTests
 
     private static void LoadAllRows(DataTable table, IDataReader dataReader)
     {
-        
         while (dataReader.Read())
         {
             dataReader.FieldCount.Should().Be(table.Columns.Count);
             var objects = new List<object>();
+
             for (var i = 0; i < table.Columns.Count; i++)
             {
                 var column = table.Columns[i];

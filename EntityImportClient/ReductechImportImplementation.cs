@@ -64,6 +64,7 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
 
             job.SourceData.SourceData = dataReader;
         }
+
         //else
         {
             //var dataTable = new DataTable();

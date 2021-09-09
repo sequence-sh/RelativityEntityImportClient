@@ -84,7 +84,7 @@ public sealed class AsyncDataReader : DbDataReader
         int length)
     {
         var s         = (byte[])this[i];
-        var    available = s.Length - (int)fieldOffset;
+        var available = s.Length - (int)fieldOffset;
 
         if (available <= 0)
             return 0;
@@ -104,7 +104,7 @@ public sealed class AsyncDataReader : DbDataReader
         int length)
     {
         var s         = (string)this[i];
-        var    available = s.Length - (int)fieldoffset;
+        var available = s.Length - (int)fieldoffset;
 
         if (available <= 0)
             return 0;
@@ -113,9 +113,9 @@ public sealed class AsyncDataReader : DbDataReader
         s.CopyTo((int)fieldoffset, buffer, bufferoffset, count);
         return count;
     }
-        
 
-    public override string GetDataTypeName(int i) => (_effectiveTypes == null ? typeof(object) : _effectiveTypes[i]).Name;
+    public override string GetDataTypeName(int i) =>
+        (_effectiveTypes == null ? typeof(object) : _effectiveTypes[i]).Name;
 
     public override DateTime GetDateTime(int i) => (DateTime)this[i];
 
@@ -123,7 +123,8 @@ public sealed class AsyncDataReader : DbDataReader
 
     public override double GetDouble(int i) => (double)this[i];
 
-    public override Type GetFieldType(int i) => _effectiveTypes == null ? typeof(object) : _effectiveTypes[i];
+    public override Type GetFieldType(int i) =>
+        _effectiveTypes == null ? typeof(object) : _effectiveTypes[i];
 
     public override float GetFloat(int i) => (float)this[i];
 
@@ -185,7 +186,6 @@ public sealed class AsyncDataReader : DbDataReader
             return this[r];
         }
     }
-        
 
     /// <summary>
     /// Gets the value of the current object in the member specified

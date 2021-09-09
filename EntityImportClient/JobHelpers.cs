@@ -59,11 +59,22 @@ public static class JobHelpers
             Console.WriteLine("Job process ID: " + status.ProcessID);
             Console.WriteLine("Job total records: " + status.TotalRecords);
             Console.WriteLine("Job total records processed: " + status.TotalRecordsProcessed);
-            Console.WriteLine("Job total records processed with warnings: " +
-                              status.TotalRecordsProcessedWithWarnings);
-            Console.WriteLine("Job total records processed with errors: " + status.TotalRecordsProcessedWithErrors);
+
+            Console.WriteLine(
+                "Job total records processed with warnings: " +
+                status.TotalRecordsProcessedWithWarnings
+            );
+
+            Console.WriteLine(
+                "Job total records processed with errors: " + status.TotalRecordsProcessedWithErrors
+            );
+
             Console.WriteLine("Job total records: " + status.TotalRecordsDisplay);
-            Console.WriteLine("Job total records processed: " + status.TotalRecordsProcessedDisplay);
+
+            Console.WriteLine(
+                "Job total records processed: " + status.TotalRecordsProcessedDisplay
+            );
+
             Console.WriteLine("Job status suffix: " + status.StatusSuffixEntries);
         };
 
