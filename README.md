@@ -16,7 +16,7 @@ and a command-line application for running Sequences, called
 
 ## Releases
 
-Can be downloaded from the [Releases page](https://gitlab.com/reductech/edr/connectors/relativityimportclient/-/releases).
+Can be downloaded from the [Releases page](https://gitlab.com/reductech/edr/connectors/entityimportclient/-/releases).
 
 ## NuGet Packages
 
