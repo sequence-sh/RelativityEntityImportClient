@@ -1,0 +1,103 @@
+include:
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/default.default.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/default.rules.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/default.scripts.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/default.variables.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/default.workflow.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/build.yml
+  - template: Jobs/Code-Quality.gitlab-ci.yml
+
+default:
+  image: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
+  tags:
+    - rt-windows
+
+stages:
+  - build
+  - test
+  - quality
+  - package
+  - sign
+
+variables:
+  PACKAGE_NAME_EXE: EDR.EntityImportClient
+
+build dev:
+  script:
+    - nuget restore
+    - msbuild -property:"Configuration=$CONFIG;VersionSuffix=$VERSION_SUFFIX" -consoleLoggerParameters:"Summary;WarningsOnly;ErrorsOnly"
+
+test dev:
+  stage: test
+  extends:
+    - .rules_dev
+  variables:
+    CONFIG: $CONFIG_DEV
+  script:
+    - vstest.console.exe ".\EntityImportClient.Tests\bin\$CONFIG\EntityImportClient.Tests.dll"
+
+test release:
+  extends:
+    - test dev
+    - .rules_release
+  variables:
+    CONFIG: $CONFIG_RELEASE
+
+code_quality:
+  stage: quality
+  cache: {}
+  rules:
+    - if: $CODE_QUALITY_DISABLED
+      when: never
+    - if: $CI_COMMIT_BRANCH == 'master'
+    - when: manual
+      allow_failure: true
+
+package exe dev:
+  stage: package
+  extends:
+    - .rules_dev_manual
+  needs:
+    - build dev
+    - test dev
+  script:
+    - cp -Recurse -Force .\EntityImportClient\bin\$CONFIG\* .\$PACKAGE_NAME_EXE\
+  artifacts:
+    name: $PACKAGE_NAME_EXE
+    paths:
+      - $PACKAGE_NAME_EXE/
+    expire_in: 3 months
+
+package exe release:
+  extends:
+    - package exe dev
+    - .rules_release
+  needs:
+    - build release
+    - test release
+  artifacts:
+    expire_in: 2 hours
+
+sign exe release:
+  stage: sign
+  image: registry.gitlab.com/reductech/containers/codesigning
+  cache: {}
+  extends:
+    - .rules_release
+  needs:
+    - package exe release
+  variables:
+    TIMESTAMP_SERVER: http://timestamp.sectigo.com
+    ALGO_FILE_DIGEST: SHA256
+    ALGO_TIME_DIGEST: SHA256
+  script:
+    - signtool.exe sign /f $RT_CERT_PATH /p $RT_CERT_PASS /fd $ALGO_FILE_DIGEST
+      /tr $TIMESTAMP_SERVER /td $ALGO_TIME_DIGEST .\$PACKAGE_NAME_EXE\EntityImportClient.exe
+  artifacts:
+    expire_in: never
