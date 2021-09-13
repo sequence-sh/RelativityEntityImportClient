@@ -1,7 +1,7 @@
 # EDR Entity Import Client for Relativity®
 
 A console application for importing
-[entities](https://docs.reductech.io/edr/how-to/scl/entities.html
+[entities](https://docs.reductech.io/edr/how-to/scl/entities.html)
 into Relativity®.
 
 ## Documentation
