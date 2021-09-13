@@ -96,7 +96,7 @@ version check release:
 
 code_quality:
   stage: quality
-  tags: {}
+  tags: []
   cache: {}
   rules:
     - if: $CODE_QUALITY_DISABLED
