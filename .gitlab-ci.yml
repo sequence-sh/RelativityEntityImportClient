@@ -6,24 +6,25 @@ include:
   - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/default.scripts.yml
   - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/default.stages.yml
+  - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/default.variables.yml
   - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/default.workflow.yml
   - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/build.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/package.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/push.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/sign.yml
   - template: Jobs/Code-Quality.gitlab-ci.yml
 
 default:
   image: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
   tags:
     - rt-windows
-
-stages:
-  - build
-  - test
-  - quality
-  - package
-  - sign
 
 variables:
   PACKAGE_NAME_EXE: EDR.EntityImportClient
@@ -62,6 +63,10 @@ version check dev:
       }
       $timestamp = Get-Date -Format "yyMMddHHmm" ;
       Write-Host "Version timestamp     : $timestamp" ;
+      $protoPath = '.\EntityImportClient.Proto\EntityImportClient.Proto.csproj' ;
+      $protoFile = Get-Content $protoPath -Raw ;
+      $protoFile -match "<Version>(.+?)(\$\(VersionSuffix\))?</Version>" | Out-Null ;
+      $protoVersion = $Matches[1] ;
       $projPath = '.\EntityImportClient\Properties\AssemblyInfo.cs' ;
       $aFile = Get-Content $projPath -Raw ;
       $aFile -match "AssemblyVersion\(`"([\d\.]+?)`"\)" | Out-Null ;
@@ -70,16 +75,29 @@ version check dev:
       $assemblyFileVersion = $Matches[1] ;
       $assemblyVersion -match "(\d+\.){3}" | Out-Null ;
       $version = $Matches[0].TrimEnd('.') ;
+      $suffix = "-" + $env:DEFAULT_PRERELEASE_VERSION ;
+      if ($env:CI_COMMIT_BRANCH -eq $env:CI_DEFAULT_BRANCH) {
+          $suffix += ".main" ;
+      } else {
+          $suffix += ".dev" ;
+      }
+      $suffix += ".$timestamp" ;
       Write-Host "Assembly Version      : $assemblyVersion" ;
       Write-Host "Assembly File Version : $assemblyFileVersion" ;
+      Write-Host "Protobufs Version     : $protoVersion" ;
       Write-Host "Version               : $version" ;
-      "PROJECT_VERSION=v$version`nVERSION_TIMESTAMP=$timestamp" |
+      Write-Host "Version suffix        : $suffix" ;
+      "PROJECT_VERSION=v$version`nVERSION_SUFFIX=$suffix`nVERSION_TIMESTAMP=$timestamp" |
           Out-File -FilePath ./version.env -Encoding ascii ;
-      $version | Out-File -FilePath ./version.txt -Encoding ascii ;
+      "${version}${suffix}" | Out-File -FilePath ./version.txt -Encoding ascii ;
       if ($assemblyVersion -ne $assemblyFileVersion) {
           Write-Error "Assembly Version must equal Assembly File Version" ;
       }
-      if ($env:CI_JOB_NAME -eq "version check release" -and "v$version" -ne $env:CI_COMMIT_TAG) {
+      if ($version -ne $protoVersion) {
+          Write-Error "Protobufs project version must equal the EntityImportClient Version" ;
+      }
+      if ($env:CI_JOB_NAME -eq "version check release" -and (
+          "v$protoVersion" -ne $env:CI_COMMIT_TAG -or "v$version" -ne $env:CI_COMMIT_TAG)) {
           Write-Error "The project version $version does not match the release tag version ${env:CI_COMMIT_TAG}" ;
           exit 1 ;
       }
@@ -101,7 +119,7 @@ code_quality:
   rules:
     - if: $CODE_QUALITY_DISABLED
       when: never
-    - if: $CI_COMMIT_BRANCH == 'master'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - when: manual
       allow_failure: true
 
@@ -152,3 +170,17 @@ sign exe release:
     paths:
       - $PACKAGE_NAME_EXE/
     expire_in: never
+
+package nuget dev:
+  script:
+    - dotnet pack .\EntityImportClient.Proto\EntityImportClient.Proto.csproj
+      --configuration $CONFIG_DEV --version-suffix $VERSION_SUFFIX --output ./
+  artifacts:
+    name: '$PACKAGE_NAME_NUGET-$PROJECT_VERSION$VERSION_SUFFIX.nupkg'
+
+package nuget release:
+  script:
+    - dotnet pack .\EntityImportClient.Proto\EntityImportClient.Proto.csproj
+      --configuration $CONFIG_RELEASE --output ./
+  artifacts:
+    name: '$PACKAGE_NAME_NUGET-$PROJECT_VERSION.nupkg'

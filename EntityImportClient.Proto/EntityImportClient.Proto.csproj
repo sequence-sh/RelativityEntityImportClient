@@ -2,16 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <IsPackable>false</IsPackable>
+    <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <Version>0.11.0$(VersionSuffix)</Version>
+    <Version>0.1.0$(VersionSuffix)</Version>
     <AssemblyName>Reductech.EDR.Connectors.EntityImportClient.Proto</AssemblyName>
     <RootNamespace>Reductech.EDR.Connectors.EntityImportClient.Proto</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageId>Reductech.EDR.Connectors.EntityImportClient.Proto</PackageId>
-    <Title>EDR Entity Import Client for Relativity®</Title>
+    <Title>EDR Entity Import Client for Relativity® Protobufs</Title>
     <Description>A console application for importing entities into Relativity.</Description>
     <Product>EDR</Product>
     <PackageTags>ediscovery;forensics;relativity;automation;orchestration;edrm</PackageTags>
@@ -27,7 +27,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Protos\entityImport.proto" />
+    <Content Include="Protos\entityImport.proto">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Pack>true</Pack>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
