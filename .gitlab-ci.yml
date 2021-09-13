@@ -76,8 +76,8 @@ version check dev:
       $assemblyVersion -match "(\d+\.){3}" | Out-Null ;
       $version = $Matches[0].TrimEnd('.') ;
       $suffix = "-" + $env:DEFAULT_PRERELEASE_VERSION ;
-      if ($env:CI_COMMIT_BRANCH -eq "master") {
-          $suffix += ".master" ;
+      if ($env:CI_COMMIT_BRANCH $env:CI_DEFAULT_BRANCH) {
+          $suffix += ".main" ;
       } else {
           $suffix += ".dev" ;
       }
@@ -119,7 +119,7 @@ code_quality:
   rules:
     - if: $CODE_QUALITY_DISABLED
       when: never
-    - if: $CI_COMMIT_BRANCH == 'master'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - when: manual
       allow_failure: true
 
