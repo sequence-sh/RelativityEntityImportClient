@@ -84,7 +84,7 @@ version check dev:
       Write-Host "Version suffix        : $suffix" ;
       "PROJECT_VERSION=v$version`nVERSION_SUFFIX=$suffix`nVERSION_TIMESTAMP=$timestamp" |
           Out-File -FilePath ./version.env -Encoding ascii ;
-      $version | Out-File -FilePath ./version.txt -Encoding ascii ;
+      "${version}${suffix}" | Out-File -FilePath ./version.txt -Encoding ascii ;
       if ($assemblyVersion -ne $assemblyFileVersion) {
           Write-Error "Assembly Version must equal Assembly File Version" ;
       }
