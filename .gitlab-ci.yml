@@ -76,7 +76,7 @@ version check dev:
       $assemblyVersion -match "(\d+\.){3}" | Out-Null ;
       $version = $Matches[0].TrimEnd('.') ;
       $suffix = "-" + $env:DEFAULT_PRERELEASE_VERSION ;
-      if ($env:CI_COMMIT_BRANCH $env:CI_DEFAULT_BRANCH) {
+      if ($env:CI_COMMIT_BRANCH -eq $env:CI_DEFAULT_BRANCH) {
           $suffix += ".main" ;
       } else {
           $suffix += ".dev" ;
