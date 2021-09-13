@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+    <Version>0.11.0$(VersionSuffix)</Version>
+    <AssemblyName>Reductech.EDR.Connectors.EntityImportClient.Proto</AssemblyName>
+    <RootNamespace>Reductech.EDR.Connectors.EntityImportClient.Proto</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Reductech.EDR.Connectors.EntityImportClient.Proto</PackageId>
+    <Title>EDR Entity Import Client for Relativity®</Title>
+    <Description>A console application for importing entities into Relativity.</Description>
+    <Product>EDR</Product>
+    <PackageTags>ediscovery;forensics;relativity;automation;orchestration;edrm</PackageTags>
+
+    <PackageProjectUrl>https://gitlab.com/reductech/edr/connectors/entityimportclient</PackageProjectUrl>
+    <RepositoryUrl>https://gitlab.com/reductech/edr/connectors/entityimportclient.git</RepositoryUrl>
+    <PackageReleaseNotes>Please see https://gitlab.com/reductech/edr/connectors/entityimportclient/-/blob/master/CHANGELOG.md</PackageReleaseNotes>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+
+    <Authors>Reductech</Authors>
+    <Company>Reductech</Company>
+    <Copyright>Copyright (c) 2021 Reductech Ltd</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\entityImport.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.17.3" />
+    <PackageReference Include="Grpc" Version="2.39.1" />
+    <PackageReference Include="Grpc.Tools" Version="2.39.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\entityImport.proto" />
+  </ItemGroup>
+  
+</Project>

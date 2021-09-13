@@ -377,5 +377,3 @@ nupkg/
 ####
 **/StrykerOutput/
 version.env
-ImportClient/.vs/ImportClient/v16/.suo
-ImportClient/.vs/ImportClient/DesignTimeBuild/.dtbcache.v2
