@@ -70,10 +70,18 @@ version check dev:
       $assemblyFileVersion = $Matches[1] ;
       $assemblyVersion -match "(\d+\.){3}" | Out-Null ;
       $version = $Matches[0].TrimEnd('.') ;
+      $suffix = "-" + $env:DEFAULT_PRERELEASE_VERSION ;
+      if ($env:CI_COMMIT_BRANCH -eq "master") {
+          $suffix += ".master" ;
+      } else {
+          $suffix += ".dev" ;
+      }
+      $suffix += ".$timestamp" ;
       Write-Host "Assembly Version      : $assemblyVersion" ;
       Write-Host "Assembly File Version : $assemblyFileVersion" ;
       Write-Host "Version               : $version" ;
-      "PROJECT_VERSION=v$version`nVERSION_TIMESTAMP=$timestamp" |
+      Write-Host "Version suffix        : $suffix" ;
+      "PROJECT_VERSION=v$version`nVERSION_SUFFIX=$suffix`nVERSION_TIMESTAMP=$timestamp" |
           Out-File -FilePath ./version.env -Encoding ascii ;
       $version | Out-File -FilePath ./version.txt -Encoding ascii ;
       if ($assemblyVersion -ne $assemblyFileVersion) {
