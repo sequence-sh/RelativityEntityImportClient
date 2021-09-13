@@ -6,24 +6,25 @@ include:
   - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/default.scripts.yml
   - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/default.stages.yml
+  - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/default.variables.yml
   - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/default.workflow.yml
   - project: reductech/templates/cicd/dotnet
     file: .gitlab/ci/build.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/package.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/push.yml
+  - project: reductech/templates/cicd/dotnet
+    file: .gitlab/ci/sign.yml
   - template: Jobs/Code-Quality.gitlab-ci.yml
 
 default:
   image: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
   tags:
     - rt-windows
-
-stages:
-  - build
-  - test
-  - quality
-  - package
-  - sign
 
 variables:
   PACKAGE_NAME_EXE: EDR.EntityImportClient
@@ -160,3 +161,17 @@ sign exe release:
     paths:
       - $PACKAGE_NAME_EXE/
     expire_in: never
+
+package nuget dev:
+  script:
+    - dotnet pack .\EntityImportClient.Proto\EntityImportClient.Proto.csproj
+      --configuration $CONFIG_DEV --version-suffix $VERSION_SUFFIX --output ./
+  artifacts:
+    name: '$PACKAGE_NAME_NUGET-$PROJECT_VERSION$VERSION_SUFFIX.nupkg'
+
+package nuget release:
+  script:
+    - dotnet pack .\EntityImportClient.Proto\EntityImportClient.Proto.csproj
+      --configuration $CONFIG_RELEASE --output ./
+  artifacts:
+    name: '$PACKAGE_NAME_NUGET-$PROJECT_VERSION.nupkg'
