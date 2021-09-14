@@ -1,3 +1,14 @@
+# v0.1.1 (2021-09-14)
+
+Bug fix release.
+
+## Issues Closed in this Release
+
+### Bug Fixes
+
+- Disable debugger launch #7
+- Disable package dll stage for release #6
+
 # v0.1.0 (2021-09-14)
 
 First release of a gRPC client for streaming entities.

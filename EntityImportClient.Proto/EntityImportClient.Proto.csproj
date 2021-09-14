@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <Version>0.1.0$(VersionSuffix)</Version>
+    <Version>0.1.1$(VersionSuffix)</Version>
     <AssemblyName>Reductech.EDR.Connectors.EntityImportClient.Proto</AssemblyName>
     <RootNamespace>Reductech.EDR.Connectors.EntityImportClient.Proto</RootNamespace>
   </PropertyGroup>
