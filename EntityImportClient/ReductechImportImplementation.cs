@@ -35,7 +35,6 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
         IAsyncStreamReader<ImportObject> requestStream,
         ServerCallContext context)
     {
-        Debugger.Launch();
 
         if (_command is null)
             return new ImportDataReply() { Success = false, Message = "Import was not started" };
