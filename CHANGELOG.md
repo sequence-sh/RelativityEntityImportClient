@@ -1,5 +1,7 @@
 # v0.1.1 (2021-09-14)
 
+Bug fix release.
+
 ## Issues Closed in this Release
 
 ### Bug Fixes
