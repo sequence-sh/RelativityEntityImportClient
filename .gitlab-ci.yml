@@ -28,6 +28,7 @@ default:
 
 variables:
   PACKAGE_NAME_EXE: EDR.EntityImportClient
+  PACKAGE_NAME_NUGET: EDR.EntityImportClient
 
 build dev:
   script:
@@ -158,6 +159,7 @@ sign exe release:
     - .rules_release
   needs:
     - package exe release
+    - version check release
   variables:
     TIMESTAMP_SERVER: http://timestamp.sectigo.com
     ALGO_FILE_DIGEST: SHA256
@@ -184,3 +186,7 @@ package nuget release:
       --configuration $CONFIG_RELEASE --output ./
   artifacts:
     name: '$PACKAGE_NAME_NUGET-$PROJECT_VERSION.nupkg'
+
+package dll release:
+  rules:
+    - when: never
