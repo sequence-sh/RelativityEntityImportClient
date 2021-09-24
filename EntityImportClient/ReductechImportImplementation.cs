@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
+using Grpc.Core.Utils;
 using kCura.Relativity.ImportAPI;
 using ReductechEntityImport;
 
@@ -20,6 +23,8 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
     {
         await Task.CompletedTask;
 
+        Console.WriteLine("Start Import Command Received");
+
         if (_command is null)
         {
             _command = request;
@@ -35,54 +40,42 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
         IAsyncStreamReader<ImportObject> requestStream,
         ServerCallContext context)
     {
+        //Debugger.Launch();
 
         if (_command is null)
             return new ImportDataReply() { Success = false, Message = "Import was not started" };
 
-        var importApi = new ImportAPI(
-            _command.RelativityUsername,
-            _command.RelativityPassword,
-            _command.RelativityWebAPIUrl
-        );
+        ImportAPI importApi;
 
-        var job = importApi.NewNativeDocumentImportJob();
+        try
+        {
+            importApi = new ImportAPI(
+                _command.RelativityUsername,
+                _command.RelativityPassword,
+                _command.RelativityWebAPIUrl
+            );
+        }
+        catch (Exception e)
+        {
+            return new ImportDataReply() { Success = false, Message = e.Message };
+        }
+
+        var job           = importApi.NewNativeDocumentImportJob();
+        var errorListener = new ErrorListener();
 
         JobHelpers.SetSettings(job.Settings, _command);
-        JobHelpers.SetJobMessages(job);
-        JobHelpers.SetExtraMessages(job);
+        JobHelpers.SetJobMessages(job, errorListener);
+        JobHelpers.SetExtraMessages(job, errorListener);
 
         //const bool streamRows = true;
 
-        //if (streamRows)
-        {
-            var dataReader = new AsyncDataReader(
-                _command.DataFields.Select(x => x.Name).ToArray(),
-                _command.DataFields.Select(x => x.DataType.Map()).ToArray(),
-                requestStream
-            );
+        var dataReader = new AsyncDataReader(
+            _command.DataFields.Select(x => x.Name).ToArray(),
+            _command.DataFields.Select(x => x.DataType.Map()).ToArray(),
+            requestStream
+        );
 
-            job.SourceData.SourceData = dataReader;
-        }
-
-        //else
-        {
-            //var dataTable = new DataTable();
-
-            //dataTable.Columns.AddRange(
-            //    _command.DataFields.Select(x => new DataColumn(x.Name, Map(x.DataType))).ToArray()
-            //);
-
-            //var streamList = await requestStream.ToListAsync();
-
-            //foreach (var row in streamList)
-            //{
-            //    var values = row.Values.Select(x => x.GetValue()).ToArray();
-
-            //    dataTable.Rows.Add(values);
-            //}
-
-            //job.SourceData.SourceData = dataTable.CreateDataReader();
-        }
+        job.SourceData.SourceData = dataReader;
 
         // Wait for the job to complete.
         try
@@ -92,10 +85,32 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
         catch (Exception e)
         {
             Console.WriteLine(e);
+            return new ImportDataReply() { Success = false, Message = e.Message };
         }
 
+        if (errorListener.IsError)
+        {
+            Console.WriteLine("Import Failed");
+            return new ImportDataReply() { Success = false, Message = errorListener.Error };
+        }
+
+        Console.WriteLine("Entities Imported");
         return new ImportDataReply() { Success = true, Message = "Success" };
     }
+}
+
+public class ErrorListener
+{
+    public void OnError(string message)
+    {
+        errors.Add(message);
+    }
+
+    public bool IsError => errors.Any();
+
+    public string Error => errors.Any() ? errors.First() : "";
+
+    private List<string> errors = new List<string>();
 }
 
 }
