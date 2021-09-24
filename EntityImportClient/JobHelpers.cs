@@ -32,7 +32,7 @@ public static class JobHelpers
         settings.StartRecordNumber             = 0;
     }
 
-    public static void SetExtraMessages(ImportBulkArtifactJob job)
+    public static void SetExtraMessages(ImportBulkArtifactJob job, ErrorListener errorListener)
     {
         // This event provides an IDictionary object with well-known parameters.
         job.OnError += row =>
@@ -42,11 +42,17 @@ public static class JobHelpers
             Console.WriteLine(row["Message"]);
         };
 
+        job.OnError += row =>
+        {
+            var message = $"{row["Line Number"]} {row["Identifier"]} {row["Message"]}";
+            errorListener.OnError(message);
+        };
+
         // This event provides the Status object.
         job.OnMessage += status => { Console.WriteLine("Job message: " + status.Message); };
     }
 
-    public static void SetJobMessages(IImportNotifier job)
+    public static void SetJobMessages(IImportNotifier job, ErrorListener errorListener)
     {
         // This event provides the JobReport object.
         job.OnComplete += report => { Console.WriteLine("The job has completed."); };
@@ -85,6 +91,12 @@ public static class JobHelpers
         job.OnFatalException += report =>
         {
             Console.WriteLine("The job experienced a fatal exception: " + report.FatalException);
+        };
+
+        job.OnFatalException += report =>
+        {
+            var message = $"Import Client Fatal Exception: {report.FatalException}";
+            errorListener.OnError(message);
         };
     }
 }

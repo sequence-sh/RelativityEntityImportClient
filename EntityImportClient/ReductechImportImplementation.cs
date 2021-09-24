@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -59,44 +60,22 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
             return new ImportDataReply() { Success = false, Message = e.Message };
         }
 
-        var job = importApi.NewNativeDocumentImportJob();
+        var job           = importApi.NewNativeDocumentImportJob();
+        var errorListener = new ErrorListener();
 
         JobHelpers.SetSettings(job.Settings, _command);
-        JobHelpers.SetJobMessages(job);
-        JobHelpers.SetExtraMessages(job);
+        JobHelpers.SetJobMessages(job, errorListener);
+        JobHelpers.SetExtraMessages(job, errorListener);
 
         //const bool streamRows = true;
 
-        if (true)
-        {
-            var dataReader = new AsyncDataReader(
-                _command.DataFields.Select(x => x.Name).ToArray(),
-                _command.DataFields.Select(x => x.DataType.Map()).ToArray(),
-                requestStream
-            );
+        var dataReader = new AsyncDataReader(
+            _command.DataFields.Select(x => x.Name).ToArray(),
+            _command.DataFields.Select(x => x.DataType.Map()).ToArray(),
+            requestStream
+        );
 
-            job.SourceData.SourceData = dataReader;
-        }
-
-        else
-        {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.AddRange(
-                _command.DataFields.Select(x => new DataColumn(x.Name, x.DataType.Map())).ToArray()
-            );
-
-            var streamList = await requestStream.ToListAsync();
-
-            foreach (var row in streamList)
-            {
-                var values = row.Values.Select(x => x.GetValue()).ToArray();
-
-                dataTable.Rows.Add(values);
-            }
-
-            job.SourceData.SourceData = dataTable.CreateDataReader();
-        }
+        job.SourceData.SourceData = dataReader;
 
         // Wait for the job to complete.
         try
@@ -106,14 +85,32 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
         catch (Exception e)
         {
             Console.WriteLine(e);
-
             return new ImportDataReply() { Success = false, Message = e.Message };
         }
 
-        Console.WriteLine("Entities Imported");
+        if (errorListener.IsError)
+        {
+            Console.WriteLine("Import Failed");
+            return new ImportDataReply() { Success = false, Message = errorListener.Error };
+        }
 
+        Console.WriteLine("Entities Imported");
         return new ImportDataReply() { Success = true, Message = "Success" };
     }
+}
+
+public class ErrorListener
+{
+    public void OnError(string message)
+    {
+        errors.Add(message);
+    }
+
+    public bool IsError => errors.Any();
+
+    public string Error => errors.Any() ? errors.First() : "";
+
+    private List<string> errors = new List<string>();
 }
 
 }

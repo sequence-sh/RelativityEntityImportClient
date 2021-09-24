@@ -134,20 +134,26 @@ public class HelperTests
     {
         var mockRepo = new MockRepository(MockBehavior.Strict);
 
-        var mock = mockRepo.Create<IImportNotifier>();
-        mock.SetupAdd(m => m.OnComplete += It.IsAny<IImportNotifier.OnCompleteEventHandler>());
+        var notifierMock  = mockRepo.Create<IImportNotifier>();
+        var errorListener = new ErrorListener();
 
-        mock.SetupAdd(
+        notifierMock.SetupAdd(
+            m => m.OnComplete += It.IsAny<IImportNotifier.OnCompleteEventHandler>()
+        );
+
+        notifierMock.SetupAdd(
             m => m.OnProcessProgress += It.IsAny<IImportNotifier.OnProcessProgressEventHandler>()
         );
 
-        mock.SetupAdd(m => m.OnProgress += It.IsAny<IImportNotifier.OnProgressEventHandler>());
+        notifierMock.SetupAdd(
+            m => m.OnProgress += It.IsAny<IImportNotifier.OnProgressEventHandler>()
+        );
 
-        mock.SetupAdd(
+        notifierMock.SetupAdd(
             m => m.OnFatalException += It.IsAny<IImportNotifier.OnFatalExceptionEventHandler>()
         );
 
-        JobHelpers.SetJobMessages(mock.Object);
+        JobHelpers.SetJobMessages(notifierMock.Object, errorListener);
 
         mockRepo.VerifyAll();
     }
