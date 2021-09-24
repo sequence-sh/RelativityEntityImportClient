@@ -11,6 +11,8 @@ public class Program
 
     public static void Main(string[] args)
     {
+        Console.WriteLine("Starting Entity Import Client");
+
         var server = new Server
         {
             Services =

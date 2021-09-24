@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
+using Grpc.Core.Utils;
 using kCura.Relativity.ImportAPI;
 using ReductechEntityImport;
 
@@ -20,6 +22,8 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
     {
         await Task.CompletedTask;
 
+        Console.WriteLine("Start Import Command Received");
+
         if (_command is null)
         {
             _command = request;
@@ -35,15 +39,25 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
         IAsyncStreamReader<ImportObject> requestStream,
         ServerCallContext context)
     {
+        //Debugger.Launch();
 
         if (_command is null)
             return new ImportDataReply() { Success = false, Message = "Import was not started" };
 
-        var importApi = new ImportAPI(
-            _command.RelativityUsername,
-            _command.RelativityPassword,
-            _command.RelativityWebAPIUrl
-        );
+        ImportAPI importApi;
+
+        try
+        {
+            importApi = new ImportAPI(
+                _command.RelativityUsername,
+                _command.RelativityPassword,
+                _command.RelativityWebAPIUrl
+            );
+        }
+        catch (Exception e)
+        {
+            return new ImportDataReply() { Success = false, Message = e.Message };
+        }
 
         var job = importApi.NewNativeDocumentImportJob();
 
@@ -53,7 +67,7 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
 
         //const bool streamRows = true;
 
-        //if (streamRows)
+        if (true)
         {
             var dataReader = new AsyncDataReader(
                 _command.DataFields.Select(x => x.Name).ToArray(),
@@ -64,24 +78,24 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
             job.SourceData.SourceData = dataReader;
         }
 
-        //else
+        else
         {
-            //var dataTable = new DataTable();
+            var dataTable = new DataTable();
 
-            //dataTable.Columns.AddRange(
-            //    _command.DataFields.Select(x => new DataColumn(x.Name, Map(x.DataType))).ToArray()
-            //);
+            dataTable.Columns.AddRange(
+                _command.DataFields.Select(x => new DataColumn(x.Name, x.DataType.Map())).ToArray()
+            );
 
-            //var streamList = await requestStream.ToListAsync();
+            var streamList = await requestStream.ToListAsync();
 
-            //foreach (var row in streamList)
-            //{
-            //    var values = row.Values.Select(x => x.GetValue()).ToArray();
+            foreach (var row in streamList)
+            {
+                var values = row.Values.Select(x => x.GetValue()).ToArray();
 
-            //    dataTable.Rows.Add(values);
-            //}
+                dataTable.Rows.Add(values);
+            }
 
-            //job.SourceData.SourceData = dataTable.CreateDataReader();
+            job.SourceData.SourceData = dataTable.CreateDataReader();
         }
 
         // Wait for the job to complete.
@@ -92,7 +106,11 @@ class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_I
         catch (Exception e)
         {
             Console.WriteLine(e);
+
+            return new ImportDataReply() { Success = false, Message = e.Message };
         }
+
+        Console.WriteLine("Entities Imported");
 
         return new ImportDataReply() { Success = true, Message = "Success" };
     }
