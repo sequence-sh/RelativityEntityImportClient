@@ -1,3 +1,13 @@
+# v0.2.0 (2021-11-26)
+
+Improved error handling.
+
+## Issues Closed in this Release
+
+### New Features
+
+- EntityImportClient should return failure if there is an error #9
+
 # v0.1.1 (2021-09-14)
 
 Bug fix release.
@@ -27,3 +37,4 @@ First release of a gRPC client for streaming entities.
 
 - Add CI configuration #2
 - Create Tests for RelativityImportClient #1
+
