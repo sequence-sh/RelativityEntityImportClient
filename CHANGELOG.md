@@ -1,5 +1,7 @@
 # v0.2.0 (2021-11-26)
 
+Improved error handling.
+
 ## Issues Closed in this Release
 
 ### New Features
