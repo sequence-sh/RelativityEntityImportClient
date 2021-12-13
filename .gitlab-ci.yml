@@ -24,7 +24,7 @@ include:
 default:
   image: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
   tags:
-    - rt-windows
+    - rt-powershell
 
 variables:
   PACKAGE_NAME_EXE: EDR.EntityImportClient
