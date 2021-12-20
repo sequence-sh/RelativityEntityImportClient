@@ -9,7 +9,7 @@ using Grpc.Core.Utils;
 using kCura.Relativity.ImportAPI;
 using ReductechEntityImport;
 
-namespace Reductech.EDR.Connectors.EntityImportClient
+namespace Reductech.Sequence.Connectors.EntityImportClient
 {
 
 class ReductechImportImplementation : Reductech_Entity_Import.Reductech_Entity_ImportBase

@@ -5,20 +5,20 @@
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
     <Version>0.2.0$(VersionSuffix)</Version>
-    <AssemblyName>Reductech.EDR.Connectors.EntityImportClient.Proto</AssemblyName>
-    <RootNamespace>Reductech.EDR.Connectors.EntityImportClient.Proto</RootNamespace>
+    <AssemblyName>Reductech.Sequence.Connectors.EntityImportClient.Proto</AssemblyName>
+    <RootNamespace>Reductech.Sequence.Connectors.EntityImportClient.Proto</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Reductech.EDR.Connectors.EntityImportClient.Proto</PackageId>
-    <Title>EDR Entity Import Client for Relativity® Protobufs</Title>
+    <PackageId>Reductech.Sequence.Connectors.EntityImportClient.Proto</PackageId>
+    <Title>Sequence® Entity Import Client for Relativity® Protobufs</Title>
     <Description>A console application for importing entities into Relativity.</Description>
-    <Product>EDR</Product>
-    <PackageTags>ediscovery;forensics;relativity;automation;orchestration;edrm</PackageTags>
+    <Product>Sequence®</Product>
+    <PackageTags>ediscovery;forensics;relativity;automation;orchestration;edrm;sequence</PackageTags>
 
-    <PackageProjectUrl>https://gitlab.com/reductech/edr/connectors/entityimportclient</PackageProjectUrl>
-    <RepositoryUrl>https://gitlab.com/reductech/edr/connectors/entityimportclient.git</RepositoryUrl>
-    <PackageReleaseNotes>Please see https://gitlab.com/reductech/edr/connectors/entityimportclient/-/blob/master/CHANGELOG.md</PackageReleaseNotes>
+    <PackageProjectUrl>https://gitlab.com/reductech/sequence/connectors/entityimportclient</PackageProjectUrl>
+    <RepositoryUrl>https://gitlab.com/reductech/sequence/connectors/entityimportclient.git</RepositoryUrl>
+    <PackageReleaseNotes>Please see https://gitlab.com/reductech/sequence/connectors/entityimportclient/-/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
     <Authors>Reductech</Authors>
