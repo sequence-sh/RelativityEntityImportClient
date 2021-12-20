@@ -2,7 +2,7 @@
 using Grpc.Core;
 using ReductechEntityImport;
 
-namespace Reductech.EDR.Connectors.EntityImportClient
+namespace Reductech.Sequence.Connectors.EntityImportClient
 {
 
 public class Program

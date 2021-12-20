@@ -2,7 +2,7 @@
 using kCura.Relativity.DataReaderClient;
 using ReductechEntityImport;
 
-namespace Reductech.EDR.Connectors.EntityImportClient
+namespace Reductech.Sequence.Connectors.EntityImportClient
 {
 
 public static class JobHelpers
