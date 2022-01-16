@@ -1,3 +1,11 @@
+# v0.3.0 (2022-01-16)
+
+## Issues Closed in this Release
+
+### Maintenance
+
+- Rename EDR to Sequence #14
+
 # v0.2.0 (2021-11-26)
 
 Improved error handling.
@@ -37,4 +45,5 @@ First release of a gRPC client for streaming entities.
 
 - Add CI configuration #2
 - Create Tests for RelativityImportClient #1
+
 
