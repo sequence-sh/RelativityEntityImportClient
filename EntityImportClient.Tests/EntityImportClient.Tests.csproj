@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -45,16 +45,16 @@
       <HintPath>..\packages\Castle.Core.4.4.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="FaspManager, Version=3.7.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\FaspManager.dll</HintPath>
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\FaspManager.dll</HintPath>
     </Reference>
-    <Reference Include="FluentAssertions, Version=6.2.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.6.2.0\lib\net47\FluentAssertions.dll</HintPath>
+    <Reference Include="FluentAssertions, Version=6.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.6.3.0\lib\net47\FluentAssertions.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.19.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.19.1\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="Google.Protobuf, Version=3.19.3.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.19.3\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Grpc.Core.Api, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
-      <HintPath>..\packages\Grpc.Core.Api.2.42.0\lib\net45\Grpc.Core.Api.dll</HintPath>
+      <HintPath>..\packages\Grpc.Core.Api.2.43.0\lib\net45\Grpc.Core.Api.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -69,8 +69,8 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="oi, Version=2021.11.0.21, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.OutsideIn.2021.11.0\lib\net40\oi.dll</HintPath>
+    <Reference Include="oi, Version=2021.12.0.19, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Relativity.OutsideIn.2021.12.0\lib\net40\oi.dll</HintPath>
     </Reference>
     <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
       <HintPath>..\packages\Polly.7.2.2\lib\net472\Polly.dll</HintPath>
@@ -79,10 +79,10 @@
       <HintPath>..\packages\Relativity.DataExchange.Client.SDK.1.15.30\lib\net462\Relativity.DataExchange.Client.SDK.dll</HintPath>
     </Reference>
     <Reference Include="Relativity.DataTransfer.Legacy.SDK, Version=0.1.28.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\Relativity.DataTransfer.Legacy.SDK.dll</HintPath>
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\Relativity.DataTransfer.Legacy.SDK.dll</HintPath>
     </Reference>
     <Reference Include="Relativity.DataTransfer.Nodes, Version=12.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\Relativity.DataTransfer.Nodes.dll</HintPath>
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\Relativity.DataTransfer.Nodes.dll</HintPath>
     </Reference>
     <Reference Include="Relativity.Kepler, Version=2.15.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Relativity.Kepler.2.15.0\lib\net462\Relativity.Kepler.dll</HintPath>
@@ -108,20 +108,20 @@
     <Reference Include="Relativity.Telemetry.Services.Interface, Version=3003.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Relativity.Telemetry.Services.Interface.3003.0.2\lib\net462\Relativity.Telemetry.Services.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="Relativity.Transfer.Client, Version=7.4.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\Relativity.Transfer.Client.dll</HintPath>
+    <Reference Include="Relativity.Transfer.Client, Version=7.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\Relativity.Transfer.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Relativity.Transfer.Client.Aspera, Version=7.4.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\Relativity.Transfer.Client.Aspera.dll</HintPath>
+    <Reference Include="Relativity.Transfer.Client.Aspera, Version=7.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\Relativity.Transfer.Client.Aspera.dll</HintPath>
     </Reference>
-    <Reference Include="Relativity.Transfer.Client.Core, Version=7.4.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\Relativity.Transfer.Client.Core.dll</HintPath>
+    <Reference Include="Relativity.Transfer.Client.Core, Version=7.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\Relativity.Transfer.Client.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Relativity.Transfer.Client.FileShare, Version=7.4.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\Relativity.Transfer.Client.FileShare.dll</HintPath>
+    <Reference Include="Relativity.Transfer.Client.FileShare, Version=7.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\Relativity.Transfer.Client.FileShare.dll</HintPath>
     </Reference>
-    <Reference Include="Relativity.Transfer.Client.Http, Version=7.4.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Relativity.Transfer.Client.7.4.6\lib\net462\Relativity.Transfer.Client.Http.dll</HintPath>
+    <Reference Include="Relativity.Transfer.Client.Http, Version=7.4.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Relativity.Transfer.Client.7.4.7\lib\net462\Relativity.Transfer.Client.Http.dll</HintPath>
     </Reference>
     <Reference Include="Renci.SshNet, Version=2020.0.1.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2020.0.1\lib\net40\Renci.SshNet.dll</HintPath>
@@ -199,10 +199,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.targets'))" />
-    <Error Condition="!Exists('..\packages\Relativity.OutsideIn.2021.11.0\build\Relativity.OutsideIn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Relativity.OutsideIn.2021.11.0\build\Relativity.OutsideIn.targets'))" />
     <Error Condition="!Exists('..\packages\Relativity.DataExchange.Client.SDK.1.15.30\build\Relativity.DataExchange.Client.SDK.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Relativity.DataExchange.Client.SDK.1.15.30\build\Relativity.DataExchange.Client.SDK.targets'))" />
+    <Error Condition="!Exists('..\packages\Relativity.OutsideIn.2021.12.0\build\Relativity.OutsideIn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Relativity.OutsideIn.2021.12.0\build\Relativity.OutsideIn.targets'))" />
   </Target>
   <Import Project="..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.2.2.8\build\net45\MSTest.TestAdapter.targets')" />
-  <Import Project="..\packages\Relativity.OutsideIn.2021.11.0\build\Relativity.OutsideIn.targets" Condition="Exists('..\packages\Relativity.OutsideIn.2021.11.0\build\Relativity.OutsideIn.targets')" />
   <Import Project="..\packages\Relativity.DataExchange.Client.SDK.1.15.30\build\Relativity.DataExchange.Client.SDK.targets" Condition="Exists('..\packages\Relativity.DataExchange.Client.SDK.1.15.30\build\Relativity.DataExchange.Client.SDK.targets')" />
+  <Import Project="..\packages\Relativity.OutsideIn.2021.12.0\build\Relativity.OutsideIn.targets" Condition="Exists('..\packages\Relativity.OutsideIn.2021.12.0\build\Relativity.OutsideIn.targets')" />
 </Project>
