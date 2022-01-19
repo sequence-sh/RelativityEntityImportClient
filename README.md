@@ -1,20 +1,8 @@
-# Sequence Entity Import Client for Relativity®
+# Sequence® Entity Import Client for Relativity®
 
 A console application for importing
 [entities](https://docs.reductech.io/sequence/how-to/scl/entities.html)
 into Relativity®.
-
-## Documentation
-
-Documentation is available here: https://docs.reductech.io
-
-## E-discovery Reduct
-
-The PowerShell Connector is part of a group of projects called
-[E-discovery Reduct](https://gitlab.com/reductech/sequence)
-which consists of a collection of [Connectors](https://gitlab.com/reductech/sequence/connectors)
-and a command-line application for running Sequences, called
-[EDR](https://gitlab.com/reductech/sequence/console/-/releases).
 
 ## Releases
 
