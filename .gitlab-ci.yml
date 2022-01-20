@@ -95,18 +95,18 @@ version check dev:
           Out-File -FilePath ./version.env -Encoding ascii ;
       "${version}${suffix}" | Out-File -FilePath ./version.txt -Encoding ascii ;
       if ($assemblyVersion -ne $assemblyFileVersion) {
-          Write-Error "Assembly Version must equal Assembly File Version" ;
+          Write-Host -Fore Red "ERROR: Assembly Version must equal Assembly File Version" ;
       }
       if ($version -ne $protoVersion) {
-          Write-Error "Protobufs project version must equal the EntityImportClient Version" ;
+          Write-Host -Fore Red "ERROR: Protobufs project version must equal the EntityImportClient Version" ;
       }
-      if ($env:CI_JOB_NAME -ne "version check release" -and $version -in $releases) {
+      if ($env:CI_JOB_NAME -ne "version check release" -and ("v$version" -in $releases -or "v$protoVersion" -in $releases)) {
           Write-Host -Fore Red "ERROR: A release for this version ($version) already exists." ;
           exit 1
       }
       if ($env:CI_JOB_NAME -eq "version check release" -and (
           "v$protoVersion" -ne $env:CI_COMMIT_TAG -or "v$version" -ne $env:CI_COMMIT_TAG)) {
-          Write-Error "The project version $version does not match the release tag version ${env:CI_COMMIT_TAG}" ;
+          Write-Host -Fore Red "ERROR: The project version $version does not match the release tag version ${env:CI_COMMIT_TAG}" ;
           exit 1 ;
       }
   artifacts:
