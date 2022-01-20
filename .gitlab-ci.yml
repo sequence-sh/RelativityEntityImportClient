@@ -64,6 +64,9 @@ version check dev:
       }
       $timestamp = Get-Date -Format "yyMMddHHmm" ;
       Write-Host "Version timestamp     : $timestamp" ;
+      $releasesUri = "https://gitlab.com/api/v4/projects/${env:CI_PROJECT_ID}/releases" ;
+      $releasesRsp = Invoke-RestMethod -Uri $releasesUri -Headers @{ "JOB-TOKEN" = $env:CI_JOB_TOKEN } ;
+      $releases = $releasesRsp | Select-Object -ExpandProperty name ;
       $protoPath = '.\EntityImportClient.Proto\EntityImportClient.Proto.csproj' ;
       $protoFile = Get-Content $protoPath -Raw ;
       $protoFile -match "<Version>(.+?)(\$\(VersionSuffix\))?</Version>" | Out-Null ;
@@ -96,6 +99,10 @@ version check dev:
       }
       if ($version -ne $protoVersion) {
           Write-Error "Protobufs project version must equal the EntityImportClient Version" ;
+      }
+      if ($env:CI_JOB_NAME -ne "version check release" -and $version -in $releases) {
+          Write-Host -Fore Red "ERROR: A release for this version ($version) already exists." ;
+          exit 1
       }
       if ($env:CI_JOB_NAME -eq "version check release" -and (
           "v$protoVersion" -ne $env:CI_COMMIT_TAG -or "v$version" -ne $env:CI_COMMIT_TAG)) {
