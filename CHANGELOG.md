@@ -12,6 +12,7 @@ Everything else is still the same - automation, simplified.
 
 ### Maintenance
 
+- Add existing release check to the version check job #17
 - Rename EDR to Sequence #14
 
 # v0.2.0 (2021-11-26)
@@ -53,5 +54,3 @@ First release of a gRPC client for streaming entities.
 
 - Add CI configuration #2
 - Create Tests for RelativityImportClient #1
-
-

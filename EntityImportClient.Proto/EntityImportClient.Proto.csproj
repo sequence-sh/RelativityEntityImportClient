@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <Version>0.2.0$(VersionSuffix)</Version>
+    <Version>0.3.0$(VersionSuffix)</Version>
     <AssemblyName>Reductech.Sequence.Connectors.EntityImportClient.Proto</AssemblyName>
     <RootNamespace>Reductech.Sequence.Connectors.EntityImportClient.Proto</RootNamespace>
   </PropertyGroup>
@@ -45,5 +45,5 @@
   <ItemGroup>
     <Protobuf Include="Protos\entityImport.proto" />
   </ItemGroup>
-  
+
 </Project>
