@@ -27,8 +27,8 @@ default:
     - rt-powershell
 
 variables:
-  PACKAGE_NAME_EXE: EDR.EntityImportClient
-  PACKAGE_NAME_NUGET: EDR.EntityImportClient
+  PACKAGE_NAME_EXE: Sequence.EntityImportClient
+  PACKAGE_NAME_NUGET: Sequence.EntityImportClient
 
 build dev:
   script:
