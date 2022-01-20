@@ -1,3 +1,19 @@
+# v0.3.0 (2022-01-16)
+
+EDR is now Sequence. The following has changed:
+
+- The GitLab group has moved to https://gitlab.com/reductech/sequence
+- The root namespace is now `Reductech.Sequence`
+- The documentation site has moved to https://sequence.sh
+
+Everything else is still the same - automation, simplified.
+
+## Issues Closed in this Release
+
+### Maintenance
+
+- Rename EDR to Sequence #14
+
 # v0.2.0 (2021-11-26)
 
 Improved error handling.
@@ -37,4 +53,5 @@ First release of a gRPC client for streaming entities.
 
 - Add CI configuration #2
 - Create Tests for RelativityImportClient #1
+
 
