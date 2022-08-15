@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
-using Grpc.Core.Utils;
 using kCura.Relativity.ImportAPI;
 using ReductechEntityImport;
 
@@ -103,14 +100,14 @@ public class ErrorListener
 {
     public void OnError(string message)
     {
-        errors.Add(message);
+        _errors.Add(message);
     }
 
-    public bool IsError => errors.Any();
+    public bool IsError => _errors.Any();
 
-    public string Error => errors.Any() ? errors.First() : "";
+    public string Error => _errors.Any() ? _errors.First() : "";
 
-    private List<string> errors = new List<string>();
+    private readonly List<string> _errors = new List<string>();
 }
 
 }

@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <Version>0.3.0$(VersionSuffix)</Version>
+    <Version>0.4.0$(VersionSuffix)</Version>
     <AssemblyName>Reductech.Sequence.Connectors.EntityImportClient.Proto</AssemblyName>
     <RootNamespace>Reductech.Sequence.Connectors.EntityImportClient.Proto</RootNamespace>
   </PropertyGroup>
@@ -34,9 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.19.3" />
-    <PackageReference Include="Grpc" Version="2.43.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.43.0">
+    <PackageReference Include="Google.Protobuf" Version="3.21.5" />
+    <PackageReference Include="Grpc" Version="2.46.3" />
+    <PackageReference Include="Grpc.Tools" Version="2.47.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
