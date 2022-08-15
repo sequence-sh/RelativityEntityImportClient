@@ -186,7 +186,7 @@ public class HelperTests
             DateTime.Now.ToShortTimeString()
         );
 
-        void Test(
+        static void Test(
             ImportObject.Types.FieldValue fieldValue,
             object expectedObject)
         {
