@@ -1,5 +1,7 @@
 # v0.4.0 (2022-08-29)
 
+Updated the Relativity Transfer and DataExchange packages to latest.
+
 ## Summary of Changes
 
 ### Connector Updates
