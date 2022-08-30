@@ -1,3 +1,20 @@
+# v0.4.0 (2022-08-29)
+
+Updated the Relativity Transfer and DataExchange packages to latest.
+
+## Summary of Changes
+
+### Connector Updates
+
+- Updated `Relativity.Transfer` packages to 7.4.10
+- Updated `Relativity.DataExchange` packages to 1.17.7
+
+## Issues Closed in this Release
+
+### Maintenance
+
+- Update project dependencies #19
+
 # v0.3.0 (2022-01-16)
 
 EDR is now Sequence. The following has changed:
@@ -54,3 +71,4 @@ First release of a gRPC client for streaming entities.
 
 - Add CI configuration #2
 - Create Tests for RelativityImportClient #1
+
