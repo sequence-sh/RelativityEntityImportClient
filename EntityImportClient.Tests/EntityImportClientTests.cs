@@ -9,9 +9,9 @@ using Grpc.Core;
 using kCura.Relativity.DataReaderClient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using ReductechEntityImport;
+using SequenceEntityImport;
 
-namespace Reductech.Sequence.Connectors.EntityImportClient.Tests
+namespace Sequence.Connectors.EntityImportClient.Tests
 {
 
 internal class FakeStreamReader<T> : IAsyncStreamReader<T>
@@ -125,7 +125,7 @@ public class HelperTests
 
         JobHelpers.SetSettings(settings, command);
 
-        settings.ApplicationName.Should().Be("Reductech Import");
+        settings.ApplicationName.Should().Be("Sequence Import");
         settings.CaseArtifactId.Should().Be(12345);
     }
 
@@ -196,8 +196,5 @@ public class HelperTests
         }
     }
 }
-
-[TestClass]
-public class UnitTest1 { }
 
 }

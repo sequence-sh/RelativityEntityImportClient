@@ -1,16 +1,30 @@
-# Sequence® Entity Import Client for Relativity®
+# Sequence Entity Import Client for Relativity®
 
 A console application for importing
-[entities](https://docs.reductech.io/sequence/how-to/scl/entities.html)
-into Relativity®.
+[entities](https://sequence.sh/docs/entities) into Relativity®.
 
-## Releases
+# Sequence Documentation
 
-Can be downloaded from the [Releases page](https://gitlab.com/reductech/sequence/connectors/entityimportclient/-/releases).
+https://sequence.sh
 
-## NuGet Packages
+More specifically, this project is used by the
+[Sequence Connector for Relativity](https://sequence.sh/docs/connectors/relativity).
 
-Are available for download from the [Reductech Nuget feed](https://gitlab.com/reductech/nuget/-/packages).
+# Download Sequence
+
+https://sequence.sh/download
+
+# Try Sequence in Your Browser
+
+https://sequence.sh/playground
+
+# Package Releases
+
+Can be downloaded from the [Releases page](https://gitlab.com/sequence/connectors/entityimportclient/-/releases).
+
+# NuGet Packages
+
+Release nuget packages are available from [nuget.org](https://www.nuget.org/profiles/Sequence).
 
 ## Licensing
 

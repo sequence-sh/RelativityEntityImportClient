@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Sequence Entity Import Client for Relativity®")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A console application for importing entities into Relativity.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Reductech")]
 [assembly: AssemblyProduct("Sequence")]
-[assembly: AssemblyCopyright("Copyright © 2021 Reductech Ltd")]
+[assembly: AssemblyCopyright("Copyright © 2022 Reductech Ltd")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.4.0.0")]
-[assembly: AssemblyFileVersion("0.4.0.0")]
+[assembly: AssemblyVersion("0.5.0.0")]
+[assembly: AssemblyFileVersion("0.5.0.0")]

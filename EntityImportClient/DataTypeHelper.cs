@@ -1,7 +1,7 @@
 ﻿using System;
-using ReductechEntityImport;
+using SequenceEntityImport;
 
-namespace Reductech.Sequence.Connectors.EntityImportClient
+namespace Sequence.Connectors.EntityImportClient
 {
 
 public static class DataTypeHelper
