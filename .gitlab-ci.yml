@@ -189,14 +189,6 @@ package dll release:
   rules:
     - when: never
 
-secret_detection:
-  image: mcr.microsoft.com/dotnet/sdk:6.0
-  tags: []
-
-code coverage dev:
-  image: mcr.microsoft.com/dotnet/sdk:6.0
-  tags: []
-
 mutation testing:
   rules:
     - when: never
