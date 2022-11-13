@@ -14,13 +14,12 @@ include:
   - project: sequence/templates/cicd
     file: .gitlab/ci/build.yml
   - project: sequence/templates/cicd
-    file: .gitlab/ci/quality.yml
-  - project: sequence/templates/cicd
     file: .gitlab/ci/package.yml
   - project: sequence/templates/cicd
     file: .gitlab/ci/push.yml
   - project: sequence/templates/cicd
     file: .gitlab/ci/sign.yml
+  - template: Jobs/Code-Quality.gitlab-ci.yml
 
 default:
   image: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
@@ -186,9 +185,5 @@ package nuget release:
     name: '$PACKAGE_NAME_NUGET-$PROJECT_VERSION.nupkg'
 
 package dll release:
-  rules:
-    - when: never
-
-mutation testing:
   rules:
     - when: never
