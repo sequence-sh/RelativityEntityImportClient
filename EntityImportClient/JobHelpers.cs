@@ -1,15 +1,15 @@
 ﻿using System;
 using kCura.Relativity.DataReaderClient;
-using ReductechEntityImport;
+using SequenceEntityImport;
 
-namespace Reductech.Sequence.Connectors.EntityImportClient
+namespace Sequence.Connectors.EntityImportClient
 {
 
 public static class JobHelpers
 {
     public static void SetSettings(Settings settings, StartImportCommand command)
     {
-        settings.ApplicationName = "Reductech Import";
+        settings.ApplicationName = "Sequence Import";
         settings.CaseArtifactId  = command.WorkspaceArtifactId; // = 1003663;
 
         settings.SelectedIdentifierFieldName = command.ControlNumberField;

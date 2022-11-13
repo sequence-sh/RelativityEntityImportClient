@@ -8,7 +8,7 @@
     <ProjectGuid>{A40AEE3A-10FA-49EE-9465-8AD96DB52AC6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reductech.Sequence.Connectors.EntityImportClient.Tests</RootNamespace>
+    <RootNamespace>Sequence.Connectors.EntityImportClient.Tests</RootNamespace>
     <AssemblyName>EntityImportClient.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

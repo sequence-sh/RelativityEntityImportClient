@@ -1,25 +1,24 @@
 include:
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/default.default.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/default.rules.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/default.scripts.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/default.stages.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/default.variables.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/default.workflow.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/build.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/package.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/push.yml
-  - project: reductech/templates/cicd/dotnet
+  - project: sequence/templates/cicd
     file: .gitlab/ci/sign.yml
-  - template: Jobs/Code-Quality.gitlab-ci.yml
 
 default:
   image: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
@@ -120,17 +119,6 @@ version check release:
     - version check dev
     - .rules_release
 
-code_quality:
-  stage: quality
-  tags: []
-  cache: {}
-  rules:
-    - if: $CODE_QUALITY_DISABLED
-      when: never
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - when: manual
-      allow_failure: true
-
 package exe dev:
   stage: package
   extends:
@@ -168,6 +156,7 @@ sign exe release:
     - package exe release
     - version check release
   variables:
+    DOCKER_AUTH_CONFIG: $RT_SIGN_REGISTRY
     TIMESTAMP_SERVER: http://timestamp.sectigo.com
     ALGO_FILE_DIGEST: SHA256
     ALGO_TIME_DIGEST: SHA256

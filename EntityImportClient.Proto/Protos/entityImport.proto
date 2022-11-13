@@ -14,11 +14,11 @@
 
 syntax = "proto3";
 
-option objc_class_prefix = "Reductech";
+option objc_class_prefix = "Sequence";
 
-package reductechEntityImport;
+package sequenceEntityImport;
 
-service Reductech_Entity_Import {
+service Sequence_Entity_Import {
 
     rpc StartImport (StartImportCommand) returns (StartImportReply) {}
 
@@ -71,8 +71,6 @@ message ImportObject{
     
 
 }
-
-
 
 message StartImportReply {
     bool Success = 1;

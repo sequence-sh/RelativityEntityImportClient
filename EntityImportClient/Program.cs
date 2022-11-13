@@ -1,8 +1,8 @@
 ﻿using System;
 using Grpc.Core;
-using ReductechEntityImport;
+using SequenceEntityImport;
 
-namespace Reductech.Sequence.Connectors.EntityImportClient
+namespace Sequence.Connectors.EntityImportClient
 {
 
 public class Program
@@ -17,7 +17,7 @@ public class Program
         {
             Services =
             {
-                Reductech_Entity_Import.BindService(new ReductechImportImplementation())
+                Sequence_Entity_Import.BindService(new SequenceImportImplementation())
             },
             Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
         };

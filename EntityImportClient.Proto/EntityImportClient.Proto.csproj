@@ -4,26 +4,26 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <Version>0.4.0$(VersionSuffix)</Version>
-    <AssemblyName>Reductech.Sequence.Connectors.EntityImportClient.Proto</AssemblyName>
-    <RootNamespace>Reductech.Sequence.Connectors.EntityImportClient.Proto</RootNamespace>
+    <Version>0.5.0$(VersionSuffix)</Version>
+    <AssemblyName>Sequence.Connectors.EntityImportClient.Proto</AssemblyName>
+    <RootNamespace>Sequence.Connectors.EntityImportClient.Proto</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Reductech.Sequence.Connectors.EntityImportClient.Proto</PackageId>
-    <Title>Sequence® Entity Import Client for Relativity® Protobufs</Title>
+    <PackageId>Sequence.Connectors.EntityImportClient.Proto</PackageId>
+    <Title>Sequence Entity Import Client for Relativity® Protobufs</Title>
     <Description>A console application for importing entities into Relativity.</Description>
     <Product>Sequence®</Product>
     <PackageTags>ediscovery;forensics;relativity;automation;orchestration;edrm;sequence</PackageTags>
 
-    <PackageProjectUrl>https://gitlab.com/reductech/sequence/connectors/entityimportclient</PackageProjectUrl>
-    <RepositoryUrl>https://gitlab.com/reductech/sequence/connectors/entityimportclient.git</RepositoryUrl>
-    <PackageReleaseNotes>Please see https://gitlab.com/reductech/sequence/connectors/entityimportclient/-/blob/master/CHANGELOG.md</PackageReleaseNotes>
+    <PackageProjectUrl>https://gitlab.com/sequence/connectors/entityimportclient</PackageProjectUrl>
+    <RepositoryUrl>https://gitlab.com/sequence/connectors/entityimportclient.git</RepositoryUrl>
+    <PackageReleaseNotes>Please see https://gitlab.com/sequence/connectors/entityimportclient/-/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
-    <Authors>Reductech</Authors>
+    <Authors>MarkWainwright;antonyoni</Authors>
     <Company>Reductech</Company>
-    <Copyright>Copyright (c) 2021 Reductech Ltd</Copyright>
+    <Copyright>Copyright (c) 2022 Reductech Ltd</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

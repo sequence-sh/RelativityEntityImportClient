@@ -3,9 +3,9 @@ using System.Collections;
 using System.Data.Common;
 using System.Linq;
 using Grpc.Core;
-using ReductechEntityImport;
+using SequenceEntityImport;
 
-namespace Reductech.Sequence.Connectors.EntityImportClient
+namespace Sequence.Connectors.EntityImportClient
 {
 
 public sealed class AsyncDataReader : DbDataReader
