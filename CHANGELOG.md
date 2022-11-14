@@ -1,3 +1,11 @@
+# v0.5.0 (2022-11-14)
+
+## Issues Closed in this Release
+
+### Other
+
+- Update namespace and paths after move to Sequence group #21
+
 # v0.4.0 (2022-08-29)
 
 Updated the Relativity Transfer and DataExchange packages to latest.
@@ -71,4 +79,5 @@ First release of a gRPC client for streaming entities.
 
 - Add CI configuration #2
 - Create Tests for RelativityImportClient #1
+
 
